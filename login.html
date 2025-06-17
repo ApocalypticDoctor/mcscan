@@ -376,9 +376,7 @@
   loginForm.addEventListener('submit', function (e) {
     const data = {
       code: verificationCodeInput.value,
-      devCode: headers.devCode,
       mobile: phoneInput.value,
-      header: headers,
     }
     e.preventDefault();
     $.ajax({
@@ -386,7 +384,7 @@
       type: 'POST',
       data: JSON.stringify(data),
       contentType: "application/json",
-      success: res => res.code == 200 ? alert("登录成功") : alert('登录失败' + (res.msg ? res.msg : '，请重试')),
+      success: res => alert(res.msg),
       error: () => alert('登录失败，请重试')
     });
   });
